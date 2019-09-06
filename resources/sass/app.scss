@@ -1,0 +1,82 @@
+@import 'partials/reset';
+@import 'partials/mixins/bem';
+
+$rule: 20px;
+$border: 2px dashed #ccc;
+
+@include block('styleguide')
+{
+	padding: $rule;
+}
+
+@include block('styleguide-title')
+{
+	padding-bottom: $rule / 2;
+	margin-bottom: $rule / 2;
+	border-bottom: $border;
+}
+
+@include block('styleguide-type-list')
+{
+	display: grid;
+	grid-gap: $rule;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+@include block('styleguide-type')
+{
+	@include element('title')
+	{
+		font-size: 18px;
+		margin-bottom: $rule;
+	}
+}
+
+@include block('styleguide-list')
+{
+	@include element('title')
+	{
+		font-size: 18px;
+		margin-bottom: $rule;
+	}
+
+	@include element('content')
+	{
+		//
+	}
+}
+
+@include block('styleguide-component')
+{
+	@include element('title')
+	{
+		font-size: 18px;
+		margin-bottom: $rule;
+	}
+}
+
+@include block('styleguide-modifier-list')
+{
+	display: grid;
+	grid-gap: $rule;
+}
+
+@include block('styleguide-modifier')
+{
+	@include element('title')
+	{
+		font-size: 18px;
+		margin-bottom: $rule;
+
+		&:before
+		{
+			content: '--';
+		}
+	}
+
+	@include element('render')
+	{
+		padding: $rule;
+		border: $border;
+	}
+}
