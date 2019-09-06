@@ -1,0 +1,24 @@
+@include block(asg-component-list)
+{
+	display: grid;
+	grid-gap: $rule;
+	grid-template-columns: repeat(3, 1fr);
+
+	@include element(header)
+	{
+		margin-bottom: $rule;
+	}
+
+	@include element(content)
+	{
+		ul
+		{
+			display: flex;
+
+			li
+			{
+				margin-right: $rule / 2;
+			}
+		}
+	}
+}

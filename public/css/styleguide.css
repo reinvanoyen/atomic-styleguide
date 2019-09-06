@@ -46,30 +46,61 @@ textarea {
   font: inherit;
 }
 
-.styleguide {
+.asg-styleguide {
+  position: relative;
+  padding-top: 40px;
+}
+
+.asg-styleguide__header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+  height: 40px;
+}
+
+.asg-styleguide__content {
   padding: 20px;
 }
 
-.styleguide-title {
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 2px dashed #ccc;
+.asg-title {
+  font-family: "Maven Pro", sans-serif;
+  font-size: 18px;
+  color: #666;
+  letter-spacing: 1px;
 }
 
-.styleguide-type-list {
+.asg-component-list {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.styleguide-type__title {
-  font-size: 18px;
+.asg-component-list__header {
   margin-bottom: 20px;
 }
 
-.styleguide-list__title {
-  font-size: 18px;
-  margin-bottom: 20px;
+.asg-component-list__content ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.asg-component-list__content ul li {
+  margin-right: 10px;
+}
+
+.asg-tag {
+  display: inline-block;
+  font-family: "Maven Pro", sans-serif;
+  font-size: 15px;
+  color: #666;
+  letter-spacing: 1px;
+  border: 1px solid #e0e0e0;
+  border-radius: 1em;
+  padding: 3.33333333px 10px;
 }
 
 .styleguide-component__title {
@@ -93,6 +124,6 @@ textarea {
 
 .styleguide-modifier__render {
   padding: 20px;
-  border: 2px dashed #ccc;
+  border: 1px solid #e0e0e0;
 }
 

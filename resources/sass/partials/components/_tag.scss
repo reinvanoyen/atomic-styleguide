@@ -1,0 +1,11 @@
+@include block(asg-tag)
+{
+	display: inline-block;
+	font-family: $default-font;
+	font-size: 15px;
+	color: $color-03;
+	letter-spacing: 1px;
+	border: $border;
+	border-radius: 1em;
+	padding: $rule / 6 $rule / 2;
+}

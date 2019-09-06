@@ -1,50 +1,11 @@
-@import 'partials/reset';
 @import 'partials/mixins/bem';
+@import 'partials/reset';
+@import 'partials/config';
 
-$rule: 20px;
-$border: 2px dashed #ccc;
-
-@include block('styleguide')
-{
-	padding: $rule;
-}
-
-@include block('styleguide-title')
-{
-	padding-bottom: $rule / 2;
-	margin-bottom: $rule / 2;
-	border-bottom: $border;
-}
-
-@include block('styleguide-type-list')
-{
-	display: grid;
-	grid-gap: $rule;
-	grid-template-columns: repeat(3, 1fr);
-}
-
-@include block('styleguide-type')
-{
-	@include element('title')
-	{
-		font-size: 18px;
-		margin-bottom: $rule;
-	}
-}
-
-@include block('styleguide-list')
-{
-	@include element('title')
-	{
-		font-size: 18px;
-		margin-bottom: $rule;
-	}
-
-	@include element('content')
-	{
-		//
-	}
-}
+@import 'partials/components/styleguide';
+@import 'partials/components/title';
+@import 'partials/components/component-list';
+@import 'partials/components/tag';
 
 @include block('styleguide-component')
 {
