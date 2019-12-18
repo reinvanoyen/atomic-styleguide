@@ -3,41 +3,12 @@
 @import 'partials/config';
 
 @import 'partials/components/styleguide';
+@import 'partials/components/breadcrumbs';
 @import 'partials/components/title';
-@import 'partials/components/component-list';
+@import 'partials/components/text';
 @import 'partials/components/tag';
-
-@include block('styleguide-component')
-{
-	@include element('title')
-	{
-		font-size: 18px;
-		margin-bottom: $rule;
-	}
-}
-
-@include block('styleguide-modifier-list')
-{
-	display: grid;
-	grid-gap: $rule;
-}
-
-@include block('styleguide-modifier')
-{
-	@include element('title')
-	{
-		font-size: 18px;
-		margin-bottom: $rule;
-
-		&:before
-		{
-			content: '--';
-		}
-	}
-
-	@include element('render')
-	{
-		padding: $rule;
-		border: $border;
-	}
-}
+@import 'partials/components/component-list';
+@import 'partials/components/component';
+@import 'partials/components/modifier';
+@import 'partials/components/modifier-list';
+@import 'partials/components/type-list';

@@ -1,21 +1,19 @@
 @include block(asg-styleguide)
 {
-	position: relative;
-	padding-top: $rule * 2;
+    background-color: $color-02;
+    position: relative;
+    min-height: 100vh;
 
-	@include element(header)
-	{
-		position: absolute;
-		top: 0;
-		width: 100%;
-		padding: $rule / 2 $rule;
-		background-color: $color-02;
-		border-bottom: $border;
-		height: $rule * 2;
-	}
+    @include element(header)
+    {
+        width: 100%;
+        padding: $rule;
+        background-color: $color-01;
+        box-shadow: $shadow;
+    }
 
-	@include element(content)
-	{
-		padding: $rule;
-	}
+    @include element(content)
+    {
+        padding: $rule;
+    }
 }

@@ -1,0 +1,20 @@
+@include block(asg-component)
+{
+    @include element(title)
+    {
+        margin-bottom: $rule / 4;
+    }
+
+    @include element(description)
+    {
+        display: block;
+        margin-bottom: $rule;
+    }
+
+    @include element(content)
+    {
+        margin-top: $rule;
+        padding-left: $rule;
+        border-left: 2px solid $color-04;
+    }
+}

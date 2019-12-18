@@ -1,24 +1,33 @@
 @include block(asg-component-list)
 {
-	display: grid;
-	grid-gap: $rule;
-	grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: $rule;
 
-	@include element(header)
-	{
-		margin-bottom: $rule;
-	}
+    @include element(header)
+    {
+        margin-bottom: $rule / 2;
+    }
 
-	@include element(content)
-	{
-		ul
-		{
-			display: flex;
+    @include element(content)
+    {
+        padding: $rule $rule / 2;
+        background-color: $color-01;
+        box-shadow: $shadow;
+    }
 
-			li
-			{
-				margin-right: $rule / 2;
-			}
-		}
-	}
+    @include element(list)
+    {
+        width: 100%;
+    }
+
+    @include element(col)
+    {
+        // for ref
+    }
+
+    @include element(item)
+    {
+        // for reference
+    }
 }

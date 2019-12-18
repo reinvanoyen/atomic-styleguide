@@ -1,11 +1,26 @@
 @include block(asg-tag)
 {
-	display: inline-block;
-	font-family: $default-font;
-	font-size: 15px;
-	color: $color-03;
-	letter-spacing: 1px;
-	border: $border;
-	border-radius: 1em;
-	padding: $rule / 6 $rule / 2;
+    display: block;
+    font-family: $default-font;
+    font-size: 15px;
+    color: $color-03;
+    padding: $rule / 4 $rule / 2;
+    transition: background-color .5s;
+
+    &:before
+    {
+        content: '→';
+        margin-right: $rule / 3;
+        color: $color-04;
+    }
+
+    &:hover
+    {
+        background-color: $color-02;
+
+        &:before
+        {
+            color: $color-03;
+        }
+    }
 }

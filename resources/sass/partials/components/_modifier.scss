@@ -1,0 +1,15 @@
+@include block(asg-modifier)
+{
+    @include element(title)
+    {
+        margin-bottom: $rule / 2;
+    }
+
+    @include element(render)
+    {
+        display: flex;
+        padding: $rule;
+        background-color: $color-01;
+        box-shadow: $shadow;
+    }
+}

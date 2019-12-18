@@ -2,11 +2,29 @@
 
 namespace ReinVanOyen\AtomicStyleguide;
 
-use Illuminate\Support\Facades\File;
+use Illuminate\Filesystem\Filesystem;
 
 class Styleguide
 {
-    public static function getTypeBySlug(string $type)
+    /**
+     * @var Filesystem $filesystem
+     */
+    private $filesystem;
+
+    /**
+     * Styleguide constructor.
+     * @param Filesystem $filesystem
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        $this->filesystem = $filesystem;
+    }
+
+    /**
+     * @param string $type
+     * @return bool|mixed
+     */
+    public function getTypeBySlug(string $type)
     {
         $validTypes = config('styleguide.types');
 
@@ -19,17 +37,28 @@ class Styleguide
         return false;
     }
 
-    public static function isValidComponent(string $typeSlug, string $componentId)
+    /**
+     * @param string $typeSlug
+     * @param string $componentId
+     * @return bool
+     */
+    public function isValidComponent(string $typeSlug, string $componentId)
     {
-        $type = self::getTypeBySlug($typeSlug);
+        $type = $this->getTypeBySlug($typeSlug);
         if (! $type) {
             return false;
         }
 
-        return File::isDirectory(config('styleguide.directory').'/'.$type['directory'].'/'.$componentId.'/');
+        return $this->filesystem->isDirectory(config('styleguide.directory').'/'.$type['directory'].'/'.$componentId.'/');
     }
 
-    public static function getComponentForType(string $typeDirectory, string $componentId): array
+    /**
+     * @param string $typeDirectory
+     * @param string $componentId
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function getComponentForType(string $typeDirectory, string $componentId): array
     {
         $metaDefaults = [
             'columns' => config('styleguide.default_columns'),
@@ -45,11 +74,11 @@ class Styleguide
             'meta' => $metaDefaults,
         ];
 
-        $modifiers = File::glob(config('styleguide.directory').'/'.$typeDirectory.'/'.$componentId.'/*.blade.php');
+        $modifiers = $this->filesystem->glob(config('styleguide.directory').'/'.$typeDirectory.'/'.$componentId.'/*.blade.php');
 
-        if (File::isFile($metaFileName)) {
+        if ($this->filesystem->isFile($metaFileName)) {
 
-            $metaContents = json_decode(File::get($metaFileName), true);
+            $metaContents = json_decode($this->filesystem->get($metaFileName), true);
             $component['meta'] = array_merge($metaDefaults, $metaContents);
         }
 
@@ -65,9 +94,14 @@ class Styleguide
         return $component;
     }
 
-    public static function getAllForType(string $type): array
+    /**
+     * @param string $type
+     * @return array
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function getAllForType(string $type): array
     {
-        $all = File::directories(config('styleguide.directory').'/'.$type.'/');
+        $all = $this->filesystem->directories(config('styleguide.directory').'/'.$type.'/');
         $components = [];
 
         foreach ($all as $component) {
@@ -75,7 +109,7 @@ class Styleguide
             $componentId = explode('/', $component);
             $componentId = $componentId[count($componentId)-1];
 
-            $components[] = self::getComponentForType($type, $componentId);
+            $components[] = $this->getComponentForType($type, $componentId);
         }
 
         return $components;

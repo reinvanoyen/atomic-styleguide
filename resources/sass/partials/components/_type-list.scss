@@ -1,0 +1,12 @@
+@include block(asg-type-list)
+{
+    @include element(item)
+    {
+        margin-bottom: $rule * 2;
+
+        &:last-child
+        {
+            margin-bottom: 0;
+        }
+    }
+}
