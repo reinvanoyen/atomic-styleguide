@@ -63,6 +63,8 @@ class Styleguide
         $metaDefaults = [
             'columns' => config('styleguide.default_columns'),
             'description' => config('styleguide.default_description'),
+            'style' => [],
+            'mode' => 'grid',
         ];
 
         $metaFileName = config('styleguide.directory').'/'.$typeDirectory.'/'.$componentId.'/meta.json';
@@ -80,6 +82,19 @@ class Styleguide
 
             $metaContents = json_decode($this->filesystem->get($metaFileName), true);
             $component['meta'] = array_merge($metaDefaults, $metaContents);
+        }
+
+        // Parse the CSS styling properties
+        if (isset($component['meta']['style'])) {
+            foreach ($component['meta']['style'] as $modifier => $props) {
+
+                $styleString = '';
+                foreach ($props as $prop => $value) {
+                    $styleString .= $prop.': '.$value.'; ';
+                }
+
+                $component['meta']['style'][$modifier] = $styleString;
+            }
         }
 
         foreach ($modifiers as $modifier) {

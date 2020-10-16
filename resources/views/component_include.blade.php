@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="asg-component__content">
-        <div class="asg-modifier-list" style="grid-template-columns: repeat({{ $component['meta']['columns'] }}, 1fr);">
+        <div class="asg-modifier-list asg-modifier-list--{{ $component['meta']['mode'] }}" style="grid-template-columns: repeat({{ $component['meta']['columns'] }}, 1fr);">
             @foreach($component['modifiers'] as $modifier)
                 <div class="asg-modifier">
                     <div class="asg-modifier__title">
@@ -20,7 +20,7 @@
                             {{ $modifier  }}
                         </div>
                     </div>
-                    <div class="asg-modifier__render">
+                    <div class="asg-modifier__render" style="{{ $component['meta']['style'][$modifier] ?? '' }}">
                         @component('components/'.$type['directory'].'/'.$component['name'].'/'.$modifier))
                         @endcomponent
                     </div>

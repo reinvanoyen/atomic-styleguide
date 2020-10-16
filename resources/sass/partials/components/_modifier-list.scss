@@ -2,4 +2,10 @@
 {
     display: grid;
     grid-gap: $rule;
+
+    @include modifier(fit)
+    {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
