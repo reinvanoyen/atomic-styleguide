@@ -22,4 +22,5 @@ return [
     ],
     'default_columns' => 1,
     'default_description' => '',
+    'load_with_vite' => [],
 ];

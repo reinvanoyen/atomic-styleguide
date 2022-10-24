@@ -8,8 +8,8 @@
     <meta name="author" content="Rein Van Oyen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="{{ asset('vendor/atomic-styleguide/css/styleguide.css') }}" rel="stylesheet" />
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro&display=swap" rel="stylesheet" />
+    @vite(config('styleguide.load_with_vite'))
 </head>
 <body>
     <div class="asg-styleguide">
@@ -26,6 +26,5 @@
             @yield('body')
         </div>
     </div>
-    <script src="{{ asset('js/app.js')  }}"></script>
 </body>
 </html>
